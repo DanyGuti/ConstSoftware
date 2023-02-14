@@ -1,0 +1,151 @@
+body{
+    background-color: #D9D9D9;
+}
+/* H2 styles*/
+h2{
+    margin-left: 2.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+a{
+    text-decoration: underline;
+    color: black;
+}
+strong{
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+.ig-logo{
+    padding: 0.3%;
+    width: 35px;
+}
+.fb-logo{
+    padding: 0.3%;
+    width: 35px;
+}
+.wh-logo{
+    padding: 0.3%;
+    width: 35px;
+}
+.nav-bar{
+    position: sticky;
+    display: block;
+    height: 50px;
+    top: 0%;
+    line-height: 50px;
+    width: 100%;
+    background-color: #BEBBBB;
+}
+.nav-bar ul{
+    list-style: none;
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+}
+.nav-bar li{
+    display: inline;
+}
+.nav-bar li a{
+    font-family:Arial, Helvetica, sans-serif;
+    color:black;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin: 0px 20px 0px 120px;
+    padding: 0%;
+}
+.nav-bar li a:hover{
+    text-decoration: underline;
+}
+/* Articles*/
+.main-text{
+    margin-top: 2%;
+    margin-left: 2.5%;
+    background-color: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0%;
+    justify-content: center;
+    text-align: left;
+}
+.ints-sec{
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+.interests{
+    margin-top: 2%;
+    margin-left: 2.5%;
+    background-color: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0%;
+    display: inline-block;
+    text-align: left;
+    width: 55%;
+}
+.main-text img{
+    height: 180px;
+    width: 280px;
+    float: right;
+    margin-right: 12%;
+}
+
+.ints-sec table{
+    margin-right: 5%;
+    float: right;
+}
+
+.math-img{
+    width: 250px;
+    height: 180px;
+}
+.sports-img{
+    width: 250px;
+    height: 180px;
+}
+.nintendo-img{
+    width: 250px;
+    height: 180px;
+}
+.ps-img{
+    width: 250px;
+    height: 180px;
+}
+
+.goals-sec{
+    margin-top: 10%;
+}
+.goals{
+    margin-top: 2%;
+    display: inline-block;
+    margin-left: 2.5%;
+    background-color: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0%;
+    text-align: left;
+    width: 65%;
+
+}
+.NY-img{
+    height: 180px;
+    width: 280px;
+    float: right;
+    margin-right: 12%;
+}
+
+footer{
+    margin-left: 2.5%;
+    margin-top: 2.5%;
+    width: 10%;
+    height: 5%;
+}
+.footer table{
+    width: 230px;
+    height: 5%;
+}
+.contacts th{
+    padding: 10px;
+}
+
+
