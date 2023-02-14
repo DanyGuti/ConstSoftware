@@ -1,0 +1,103 @@
+<!DOCTYPE hmtl>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre HTTP...</title>
+    <link rel="stylesheet" href="styles_main.css">
+</head>
+
+<html lang="en">
+<nav class="nav-bar">
+    <ul>
+        <li><a href="main.html">Sobre mí...</a></li>
+        <li><a href="about_html.html">Sobre HTML</a></li>
+        <li><a href="about_http.html">Sobre HTTP</a></li>
+        <li><a href="form.html">¿Qué piensas?</a></li>
+        <li><a href="rsc.html">Recursos Utilizados</a></li>
+    </ul>
+</nav>
+<body>
+    <section>
+        <h2> Propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH y DELETE</h2>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">POST</h2>
+            <p style="margin-left: 30px;">El método de POST se usa más para crear nuevos recursos.
+                Cuando se realiza un buen proceso de posteo se obtiene un HTTP code de 201.
+            </p>
+        </article>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">GET</h2>
+            <p style="margin-left: 30px;">El método de GET se usa más para hacer retrieve de información o
+                realizar lectura de algún recurso.
+                Cuando se realiza un buen proceso de posteo se obtiene un HTTP code de 201.
+                <strong>No puede cambiar información solamente leerla.</strong>
+                Es un método idempotente, pues siempre al realizar múltiples requests,
+                únicamente se realizará una.
+            </p>
+        </article>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">PUT</h2>
+            <p style="margin-left: 30px">
+                El método de PUT se usa para actualizar capacidades.
+            </p>
+        </article>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">HEAD</h2>
+            <p style="margin-left: 30px">
+                El método de HEAD pide respuesta idéntica a la de una petición GET, pero sin el
+                cuerpo de la respuesta..
+            </p>
+        </article>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">PATCH</h2>
+            <p style="margin-left: 30px">
+                El método de PATCH utilizado para aplicar modificaciones parciales a un recurso.
+            </p>
+        </article>
+        <article class="main-text">
+            <h2 style="font-size: 25px;">DELETE</h2>
+            <p style="margin-left: 30px">
+                El método de DELETE utilizado para borrar un recurso específico.
+            </p>
+        </article>
+    </section>
+    <footer>
+        <table class="contacts">
+            <tr>
+                <th>
+                    <img class="ig-logo" src="instagram.png">
+                </th>
+                <th>
+                    <strong>@dany__guti</strong>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <img class="fb-logo" src="facebook-app-symbol.png">
+                </th>
+                <th>
+                    <strong>Dani Gutiérrez</strong>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <img class="wh-logo" src="whatsapp.png">
+                </th>
+                <th>
+                    <strong>+52 4434403461</strong>
+                </th>
+            </tr>
+        </table>
+    </footer>
+</body>
+<!-- ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en
+algún sitio? ¿Por qué?
+¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?
+Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?
+¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se
+encontró con un error 404? ¿Por qué?
+¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se
+encontró con un error 500? ¿Por qué? -->
+
+</html>
