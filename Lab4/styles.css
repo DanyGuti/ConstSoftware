@@ -1,0 +1,10 @@
+body{
+    background-color: #D9D9D9;
+}
+table{
+    font-family: arial, sans-serif;
+}
+table td{
+    border: 1px solid #cf9c9c;
+    text-align: left;
+}
