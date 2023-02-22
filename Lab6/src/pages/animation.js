@@ -8,7 +8,7 @@ function getPassword() {
     // "?=.*" lookahead one or more lowercase: [a-z]
     // "?=.*" lookahead one or more uppercase: [A-Z]
     // "?=.*" lookahead one or more specialChar: [A-Z]
-    // "?!.*"   negative lookahead assertion of spaces if any: \s
+    // "?!.*" negative lookahead assertion of spaces if any: \s
     // "{8,15}" quantifier between 8-15
 
     let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
@@ -27,24 +27,47 @@ function getPassword() {
 function showPswd(){
     const togglePassword = document.querySelector("#chbox1");
     const pswd = document.querySelector("#pswd");
-    const toggleCheck = document.querySelector("#chbox2");
-    const check = document.querySelector("#checkPswd");
-    
-    togglePassword.addEventListener("click", function() {
+
+    togglePassword.addEventListener("click", function () {
         const type = pswd.getAttribute("type") === "password" ? "text" : "password";
         pswd.setAttribute("type", type);
     });
     const form = document.querySelector("form");
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
     });
 
-    toggleCheck.addEventListener("click", function() {
+    const toggleCheck = document.querySelector("#chbox2");
+    const check = document.querySelector("#checkPswd");
+    toggleCheck.addEventListener("click", function () {
         const type = check.getAttribute("type") === "password" ? "text" : "password";
         check.setAttribute("type", type);
     });
     const formCheck = document.querySelector("form");
-    formCheck.addEventListener("submit", function(e) {
+    formCheck.addEventListener("submit", function (e) {
         e.preventDefault();
+    });
+}
+
+function changeFont() {
+    const pswd = document.querySelector("#checkPswd");
+    pswd.getAttribute("type") === "password" ? pswd.style.fontFamily = "cursive" : pswd.style.fontFamily = "Helvetica";
+    const pswd2 = document.querySelector("#pswd");
+    pswd2.getAttribute("type") === "password" ? pswd2.style.fontFamily = "cursive" : pswd2.style.fontFamily = "Helvetica";
+}
+
+function dispInfo() {
+    const element = document.getElementById("change");
+    element.className = "div-show";
+    element.addEventListener("mouseout", function () {
+        element.className = "div-primary"
+    });
+}
+
+function dispValidate() {
+    const element = document.getElementById("validate");
+    element.className = "div-show";
+    element.addEventListener("mouseout", function () {
+        element.className = "div-primary"
     });
 }

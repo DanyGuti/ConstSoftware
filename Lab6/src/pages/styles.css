@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .div-primary {
+        @apply hidden invisible;
+    }
+    .div-show {
+        @apply container mx-auto justify-center justify-items-center text-center my-2 bg-slate-400 shadow-md rounded px-8 pt-3 pb-3 mb-4 w-80 text-gray-100;
+    }
+}
