@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="shortcut icon" href="#">
+    <title>ShoppingCart</title>
+</head>
+<%- include('partials/nav-bar.ejs') %>
+<body class="bg-slate-500">
+    <div class="grid w-full py-14">
+        <ul class="list-none text-center w-full">
+            <script> let total = 0;</script>
+                <% for (let product of products) { %>
+                    <% if (caca=="on" && product.handle == "@cacahuates"){ %>
+                        <li class="text-center text-zinc-50">
+                            <%= product.nombre %>:
+                            $<%= product.precio %>
+                            <script> total+= Number("<%= product.precio%>")</script>
+                        </li>
+                    <% } %>
+                    <% if (pf=="on" && product.handle == "@pollo"){ %>
+                        <li class="text-center text-zinc-50"> 
+                            <%= product.nombre %>:
+                            $<%= product.precio %>
+                            <script> total += Number("<%= product.precio%>")</script>
+                        </li>
+                    <% } %>
+                    <% if (flor=="on" && product.handle == "@flores"){ %>
+                        <li class="text-center text-zinc-50">
+                            <%= product.nombre %>:
+                            $<%= product.precio %>
+                            <script> total += Number("<%= product.precio%>")</script>
+                        </li>
+                    <% } %>
+                <%} %>
+        </ul>
+            <p class="text-zinc-100 py-5 text-center"> Tu total es de:
+                <script>document.write(total);</script>
+            </p>
+    </div>
+    <div class="grid justify-center text-center mx-auto w-2/6">
+        <h1 class="text-2xl text-zinc-100">Template Engines (We used EJS)</h1>
+        <p class="text-zinc-100 py-7">
+            Template Engines are used to render data at client browser
+            allowing fast rendering and also in the processing of HTML data which
+            is send by server.
+            There are many template engines for Node JS,
+            but there are a couple of them which are used the most.
+            Here's a list of them:
+        </p>
+        <li class="text-zinc-100"> Jade</li>
+        <li class="text-zinc-100"> Vash</li>
+        <li class="text-zinc-100"> EJS</li>
+        <li class="text-zinc-100"> Mustache</li>
+        <li class="text-zinc-100"> Dust.js</li>
+        <li class="text-zinc-100"> Nunjucks</li>
+        <li class="text-zinc-100"> Handlebars</li>
+        <li class="text-zinc-100"> atpl</li>
+        <li class="text-zinc-100"> haml</li>
+    </div>
+</body>
+</html>

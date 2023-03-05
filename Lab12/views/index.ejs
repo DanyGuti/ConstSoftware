@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Home</title>
+</head>
+<%- include('partials/nav-bar.ejs') %>
+<body class="bg-slate-500">
+    <div class="w-full grid text-center">
+        <div class="grid-rows-2 justify-center py-7">
+            <div class="columns-1 text-lg py-5">
+                <div class="text-center text-xl">
+                    <h1 class="text-xl">Hello!! We are the Marie Blue GroceryStore</h1>
+                </div>
+            </div>
+            <div class="columns-1 text-lg py-5">
+                <div class="text-center text-xl">
+                    <form action="/buy/comprar">
+                        <button type="submit"
+                            class="p-5 rounded-lg bg-slate-700 text-zinc-100 hover:bg-zinc-100 hover:text-slate-700">
+                            Comprar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
