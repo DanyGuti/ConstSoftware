@@ -1,0 +1,34 @@
+{
+  "name": "proyectnexus",
+  "version": "1.0.0",
+  "description": "WebPage ProyectNexus",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanyGuti/Construccion_Software.git"
+  },
+  "keywords": [
+    "Webpage",
+    "Team",
+    "ProyectNexus"
+  ],
+  "author": "Daniel Gutierrez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanyGuti/Construccion_Software/issues"
+  },
+  "homepage": "https://github.com/DanyGuti/Construccion_Software#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.21",
+    "tailwindcss": "^3.2.7"
+  }
+}
