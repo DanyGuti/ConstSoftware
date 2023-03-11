@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Marie Groceries</title>
+</head>
+<%- include('partials/nav-bar.ejs') %>
+<body class="bg-slate-500 text-center">
+    <div class="grid text-center">
+        <p class=" text-3xl text-slate-100 mx-auto mt-5">Por favor pide lo que quieras:</p>
+    </div>
+    <!--God practice with a for loop to not repeat divs and code -->
+    <form class="grid w-full grid-cols-3 grid-rows-2 text-center py-5 justify-center" action="/buy/carrito" method="POST">
+        <%for(product of products){%>
+            <div class="row-span-2 justify-center p-5 bg-slate-600 rounded-xl w-2/3 ml-20 shadow-xl mt-5">
+                <div class=" hover:bg-gray-700 shadow-xl rounded-xl">
+                    <img class="mx-auto" src="<%=product.imagen%>" alt="Image">
+                </div>
+                <div class="mt-3 mx-auto w-2/4 bg-slate-500 rounded-lg shadow-xl">
+                    <input class="cursor-pointer" id="<%=product.nombre%>" type="checkbox" name="<%=product.nombre%>">
+                    <label class="text-zinc-200" for="<%=product.nombre%>"><%=product.nombre%> $<%=product.precio%></label>
+                </div>
+            </div>
+        <% } %>
+        <!-- <div class="row-span-2 justify-center p-5 bg-slate-600 rounded-xl w-2/3 ml-28 shadow-xl">
+            <div class="hover:bg-gray-700 shadow-xl rounded-xl">
+                <img class=" mx-auto" src="/public/pngimg.com-fried_chicken_PNG14094.png" alt="Image">
+            </div>
+            <div class=" mt-3 mx-auto w-2/4 bg-slate-500 rounded-lg shadow-xl">
+                <input class="cursor-pointer" id="PF" type="checkbox" name="PF">
+                <label class="text-zinc-200" for="PF">Pollo Frito $200</label>
+            </div>
+        </div>
+        <div class="row-span-2 justify-center p-5 bg-slate-600 rounded-xl w-2/3 ml-20 shadow-xl">
+            <div class="hover:bg-gray-700 shadow-xl rounded-xl h-60">
+                <img class="mx-auto" src="/public/274d7614cd36432a341afdb087f10728.png" alt="Image">
+            </div>
+            <div class=" mt-3 mx-auto w-2/4 bg-slate-500 rounded-lg shadow-xl">
+                <input class="cursor-pointer" id="flores" type="checkbox" name="flores">
+                <label class="text-zinc-200" for="flores">Flores $250</label>
+            </div>
+        </div>
+        <div class="row-span-2 justify-center p-5 bg-slate-600 rounded-xl w-2/3 ml-20 shadow-xl">
+            <div class="hover:bg-gray-700 shadow-xl rounded-xl h-60">
+                <img class="mx-auto" src="/public/274d7614cd36432a341afdb087f10728.png" alt="Image">
+            </div>
+            <div class=" mt-3 mx-auto w-2/4 bg-slate-500 rounded-lg shadow-xl">
+                <input class="cursor-pointer" id="flores" type="checkbox" name="flores">
+                <label class="text-zinc-200" for="flores">Flores $250</label>
+            </div>
+        </div> -->
+    </div>
+    <div class="py-10 text-xl">
+        <input class="p-5 bg-slate-400 text-zinc-100 cursor-pointer rounded-lg" type="submit" value="Ir a carrito" class="btn btn-primary text-center">
+    </div>
+</form>
+</body>
