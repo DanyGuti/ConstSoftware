@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Marie Groceries</title>
+</head>
+<%- include('partials/nav-bar.ejs') %>
+<body class="bg-slate-500 text-center">
+    <div class="grid text-center">
+        <p class=" text-3xl text-slate-100 mx-auto mt-5">Por favor pide lo que quieras:</p>
+    </div>
+    <!--God practice with a for loop to not repeat divs and code -->
+    <form class="grid w-full grid-cols-3 grid-rows-2 text-center py-5 justify-center" action="/buy/carrito" method="POST">
+        <%for(product of products){%>
+            <div class="row-span-2 justify-center p-5 bg-slate-600 rounded-xl w-2/3 ml-20 shadow-xl mt-5">
+                <div class=" hover:bg-gray-700 shadow-xl rounded-xl">
+                    <img class="mx-auto" src="<%=product.imagen%>" alt="Image">
+                </div>
+                <div class="mt-3 mx-auto w-2/4 bg-slate-500 rounded-lg shadow-xl">
+                    <input class="cursor-pointer" id="<%=product.nombre%>" type="checkbox" name="<%=product.nombre%>">
+                    <label class="text-zinc-200" for="<%=product.nombre%>"><%=product.nombre%> $<%=product.precio%></label>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <div class="py-10 text-xl">
+        <input class="p-5 bg-slate-400 text-zinc-100 cursor-pointer rounded-lg" type="submit" value="Ir a carrito" class="btn btn-primary text-center">
+    </div>
+    <% if(last_added_product != '') { %>
+        <div class="py-10 text-xl">
+            Last added product, was: <%= last_added_product%>
+            The pros of using a software architecture type of MVC (Model View Controller)
+            architecture which uses a flow between a model, a controller and a view...
+            The model notifies de controller, then the controller updates the views, 
+            followed by a user action which is called in the controller and updates the model.
+            In real scenarios, the model just fetches data from database, insert it, update it, etc.
+            Model is where XML, HTML, CSS files are and which the customer/user interacts with.
+            Controller is in charge of processing the data after the request of a view and before 
+            updating something in the database with our Model.
+            <ul>
+                <h1 class="text-2xl">PROS</h1>
+                <li class="list-disc">Development of app becomes fast</li>
+                <li class="list-disc">Easy to collaborate between various programmers</li>
+                <li class="list-disc">Easier to Debug as we have multiple levels to look at</li>
+                <h1 class="text-2xl">CONS</h1>
+                <li class="list-disc">Strict rules on methdos</li>
+                <li class="list-disc">It's hard to understand MVC architecture</li>
+            </ul>
+        </div>
+    <% } %>
+</form>
+</body>
