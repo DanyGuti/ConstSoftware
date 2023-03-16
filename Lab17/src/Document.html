@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:3000/buy/carrito -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:3000/buy/carrito#">
+    <link rel="stylesheet" href="./Document_files/output.css">
+    <title>Document</title>
+</head>
+<body class="bg-slate-500 text-center"><nav class="rounded-sm flex-nowrap relative flex w-full items-center justify-center bg-slate-600 py-4 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start">
+    <div class="w-full grid grid-cols-4 items-center justify-center">
+        <div class="items-center px-11">
+            <li class="text-center text-zinc-100 list-none">
+                <a class="" method="GET" href="http://localhost:3000/">Home</a>
+            </li>
+        </div>
+        <div class="text-center items-center px-10">
+            <li class="text-zinc-100 list-none">
+                <a class="" method="">Landing Page</a>
+            </li>
+        </div>
+        <div class="text-center items-center px-10">
+            <li class="text-zinc-100 list-none">
+                <a class="" method="GET" href="http://localhost:3000/buy/comprar">Comprar</a>
+            </li>
+        </div>
+        <div class="text-center items-center px-10">
+            <li class="text-zinc-100 list-none">
+                <a class="" method="GET" href="http://localhost:3000/buy/carrito">Ir al Carrito</a>
+            </li>
+        </div>
+</div></nav>
+
+    <div class="grid text-center">
+        <p class=" text-3xl text-slate-100 mx-auto mt-5">Por favor pide lo que quieras:</p>
+    </div>
+    <form class="grid w-full grid-cols-3 grid-rows-2 text-center py-5" action="http://localhost:3000/buy/carrito" method="POST">
+        <div class="content-center w-1/2 justify-center">
+            <img class="mx-auto" src="./Document_files/990.png" alt="Image">
+            <input type="radio" name="cacahuates">
+            <label for="cch">Cacahuates</label>
+        </div>
+        <div class="justify-center content-center">
+            <img class="mx-auto" src="./Document_files/990.png" alt="Image">
+            <input type="radio" name="PF">
+            <label for="pf">Pollo frito</label>
+        </div>
+        <div>
+            <img class="mx-auto" src="./Document_files/990.png" alt="Image">
+            <input type="radio" name="flores">
+            <label for="flores">Flores</label>
+        </div>
+    
+    <div>
+    </div>
+    <div class="py-10 text-xl">
+        <input class="p-5 bg-slate-400 text-zinc-100 cursor-pointer rounded-lg" type="submit" value="Ir a carrito">
+    </div>
+</form>
+</body></html>
