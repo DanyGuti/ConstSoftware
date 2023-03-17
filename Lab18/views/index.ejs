@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Home</title>
+</head>
+<%- include('partials/nav-bar.ejs') %>
+<body class="bg-slate-500">
+    <div class="w-full grid text-center">
+        <div class="grid-rows-2 justify-center py-7">
+            <div class="columns-1 text-lg py-5">
+                <div class="text-center text-xl">
+                    <h1 class="rounded-xl text-zinc-100 mx-auto w-1/6 text-xl hover:bg-gradient-to-r from-slate-700 to-gray-400 duration-700">Hello!! We are the Marie Blue GroceryStore</h1>
+                </div>
+            </div>
+            <div class="columns-1 text-lg py-5">
+                <div class="text-center text-xl pb-6">
+                    <form class="flex justify-items-center" action="/buy/comprar">
+                        <div class="flex-1 h-7 w-28 justify-items-center">
+                            <button type="submit"
+                                class="p-5 rounded-lg bg-slate-700 text-zinc-100 duration-700 hover:bg-zinc-100 hover:text-slate-700">
+                                Comprar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center text-xl pt-10">
+                    <form class="flex justify-items-center" action="/nuevo/product" method="GET">
+                        <div class="flex-1 h-7 w-28 justify-items-center">
+                            <button type="submit"
+                                class="p-5 rounded-lg bg-slate-700 text-zinc-100 duration-700 hover:bg-zinc-100 hover:text-slate-700">
+                                Register New Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <script src="../public/animation.js"></script>
+</head>
+
+<body class="bg-slate-500">
+    <h1 class=" text-zinc-100 text-3xl font-bold text-center">
+        Register to our shop
+    </h1>
+    <div class="container relative my-7 mx-auto bg-slate-100 shadow-md rounded px-8 pt-3 pb-3 mb-4 w-80">
+        <h1 class="text-center font-bold text-xl"> ShopMarie</h1>
+        <div class="container grid-cols-2 grid-rows-4 justify-items-center">
+            <form class="text-center p-10" action="/signup" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <label class="block text-gray-700 text-lg font-bold mb-2" for="email">Nombre</label>
+                <div class="relative inline-block space-x-1 right-2">
+                    <input onmouseover="" onkeypress=""
+                        class="shadow appearance-none border rounded w-full ml-0 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                        id="nombreU" name="nombreU" placeholder="Nombre">
+                </div>
+                <label class="block text-gray-700 text-lg font-bold mb-2" for="email">Email</label>
+                <div class="relative inline-block space-x-1 right-2">
+                    <input onmouseover="" onkeypress=""
+                        class="shadow appearance-none border rounded w-full ml-0 py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                        type="email" id="email" name="email" placeholder="Email">
+                </div>
+                <label class="block text-gray-700 text-base font-bold mb-2" for="checkPswd">Password</label>
+                <div class="relative inline-block space-x-1 right-5">
+                    <input onkeypress="dispInfo()"
+                        class="shadow appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                        type="password" id="checkPswd" name="checkPswd" placeholder="*******">
+                    <div class="absolute inline-block rounded">
+                        <button id="chbox1" onclick="showPswd()" onmouseover="changeFont()"
+                            class="shadow appearance-none rounded text-gray-100 bg-slate-400 py-2 px-1 hover:bg-slate-50 hover:text-slate-400">Show</button>
+                    </div>
+                </div>
+                <div class="mt-3 iterms-center justify-between">
+                    <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit" id="pswd" onclick="getPassword()">
+                        Validate
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Invisible div unless a keypress
+    telling how to input the password -->
+    <div id="change" class="div-primary">
+        <h1><strong>Para ver las referencias haz una contraseña valida</strong></h1>
+        Escribe una contraseña de 7-15 caracteres que contenga:
+        <ul class="list-inside">
+            <li class="list-disc text-sm">1 mayúscula</li>
+            <li class="list-disc text-sm">1 minúscula</li>
+            <li class="list-disc text-sm">1 número</li>
+            <li class="list-disc text-sm">1 caracter especial</li>
+        </ul>
+    </div>
+
+    <div id="validate" class="div-primary">
+        <ul class="list-inside">
+            <li class="list-disc text-sm"> ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos
+                los inputs de las formas antes de enviar los
+                datos al servidor?
+                Porque así te evitas datos en tu DB que no quieres utilizar y para evitar que haya errores al momento de
+                usar los datos
+            </li>
+            <li class="list-disc text-sm"> ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?
+                Posiblemente quitando las alertas de cuando no se tiene la expresion regular que se pide
+            </li>
+            <li class="list-disc text-sm">Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces
+                ¿por qué la primera pregunta dice que es
+                una buena práctica?
+                No es de que sea sencillo, pues debe existir algo que proteja la modificación del código de la página
+                si se aplica esa herramienta, es muy difícil que se puedan saltar la validación, por lo que
+                parece que sí es mejor práctica validación de JS de su contraparte en html poner "required", sin embargo
+                es muy parecido, si
+                alguien tiene acceso a modificar el código podrá saltarse la validación del foro.</li>
+        </ul>
+    </div>
+</body>
+
+</html>
