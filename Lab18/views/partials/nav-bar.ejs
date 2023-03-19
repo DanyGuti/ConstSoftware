@@ -1,7 +1,7 @@
 <nav class="shadow-lg rounded-sm flex-nowrap relative flex w-full items-center justify-center bg-slate-600 py-4 shadow-black/5 dark:bg-gray-800 dark:shadow-black/10 lg:flex-wrap lg:justify-start">
     <div class="w-full grid grid-cols-5 items-center justify-center">
         <% if(isLoggedIn) { %>
-            <h1> Hola <%= nombreU %> </h1>
+            <h1> Hola <%= email %> </h1>
             <div class="text-center items-center px-10">
                 <li class="rounded-xl mx-auto w-2/3 text-center text-zinc-100 list-none hover:bg-gradient-to-r from-slate-600 to-slate-800">
                     <a class="" method="GET" href="/users/logout">Logout</a>

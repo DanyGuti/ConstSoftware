@@ -11,8 +11,8 @@ exports.get_lista = (req, res) => {
         res.render(__dirname + '/../views/comprar', {
             products: rows,
             last_added_product:req.session.last_added_product || '',
-            isLoggedin: req.session.isLoggedin || false,
-            nombreU: req.session.nombreU || ''
+            isLoggedIn: req.session.isLoggedIn || false,
+            email: req.session.email || ''
         }); 
     })
     .catch(error =>{
@@ -76,7 +76,9 @@ exports.post_cart = (req, res) => {
                     pf: PolloFrito,
                     flor: Flores,
                     maruchan: Maruchan,
-                    products: rows
+                    products: rows,
+                    isLoggedIn: req.session.isLoggedIn || false,
+                    email: req.session.email || ''
                 });
             })
             .catch(error => {
