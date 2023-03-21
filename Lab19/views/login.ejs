@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>LoginMarieShop</title>
+</head>
+<body class="bg-slate-500">
+    <% if(message) { %>
+        <div class="container bg-slate-300 text-center w-32 h-20">
+            <h1 class=" text-zinc-200">
+                <%= message %>
+            </h1>
+        </div>
+    <% } %>
+    <form action="/login" method="POST" class="flex justify-center justify-items-center text-center w-full">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="flex flex-col text-center w-full">
+            <div class="pt-5">
+                <label for="email"> User name: </label>
+            </div>
+            <div class= "pt-5">
+                <input name="email" id="email" class="rounded w-2/12 text-center" type="text" placeholder="danyguti2001@hotmail.com">
+            </div>
+            <div class="pt-5">
+                <label for="password"> Password: </label>
+            </div>
+            <div class="pt-5">
+                <input name="password" id="password" class="rounded w-2/12" type="text" placeholder="MarieMarieMarie">
+            </div>
+            <div class="pt-5">
+                <button class=" p-5 rounded-lg w-1/12 bg-slate-200" type="submit" value="LoginButton">
+                    LOGIN
+                </button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

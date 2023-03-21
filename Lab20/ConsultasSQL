@@ -75,3 +75,119 @@ SELECT denominacion, SUM(cantidad * precio)
 FROM materialtot
 WHERE denominacion = denominacion
 GROUP BY denominacion;
+
+
+-- Denominación, RFC y RazonSocial de los proveedores que suministran materiales al 
+-- proyecto Televisa en acción que no se encuentran apoyando al proyecto Educando
+--  en Coahuila (Solo usando vistas).
+-- Primero vista de RFC y Razon social de Proveedores
+-- Que pertenecen al proyecto Televisa en acción
+-- CREATE VIEW Televisa as
+CREATE VIEW EntregasTelevisa as SELECT razonsocial as 'RazonSocial', rfc as 'RFC'
+FROM proveedores
+WHERE rfc IN(
+                SELECT rfc
+                FROM entregan
+                WHERE numero IN(
+                    SELECT numero
+                    FROM proyectos
+                    WHERE denominacion LIKE 'Televisa en acción'
+                )
+);
+-- Segund vista de RFC y Razon social de Proveedores
+-- Que pertenecen al proyecto Educando en Coahuila en acción
+CREATE VIEW entregasCoahuila as SELECT razonsocial as 'RazonSocial', rfc as 'RFC'
+FROM proveedores
+WHERE rfc IN(
+                SELECT rfc
+                FROM entregan
+                WHERE numero IN(
+                    SELECT numero
+                    FROM proyectos
+                    WHERE denominacion LIKE 'Educando en Coahuila'
+                )
+);
+
+-- Tercero hacer un query de la diferencia de columnas de la razon social
+SELECT RazonSocial, RFC
+FROM entregastelevisa
+WHERE RazonSocial NOT IN(
+    SELECT RazonSocial
+    FROM entregascoahuila
+);
+
+-- Denominación, RFC y RazonSocial de los proveedores que suministran materiales al 
+-- proyecto Televisa en acción que no se encuentran apoyando al proyecto Educando
+--  en Coahuila (Sin usar vistas, utiliza not in, in o exists).
+SELECT razonsocial as 'RazonSocial', rfc as 'RFC'
+FROM proveedores
+WHERE rfc IN(
+                SELECT rfc
+                FROM entregan
+                WHERE numero IN(
+                    SELECT numero
+                    FROM proyectos
+                    WHERE denominacion LIKE 'Televisa en acción'
+                ) AND numero NOT IN(
+                	SELECT numero
+                    FROM proyectos
+                    WHERE denominacion LIKE 'Educando en Coahuila'
+                )
+);
+
+-- Costo de los materiales y los Materiales que son entregados al proyecto Televisa en acción
+-- cuyos proveedores también suministran materiales al proyecto Educando en Coahuila.
+-- 1.- Hacer columna con costos por materiales SELECT precio+(impuesto) as 'Costo'
+-- 2.- 
+
+CREATE VIEW CostoPorMaterialTelevisa as SELECT precio+(impuesto) as 'CostoPorMaterial'
+FROM materiales
+WHERE clave IN(
+    SELECT clave
+    FROM entregan
+    WHERE numero IN(
+    	SELECT numero
+    	FROM proyectos
+    	WHERE denominacion LIKE 'Televisa en acción'
+    )
+);
+
+CREATE VIEW CostoPorMaterialCoahuila as SELECT precio+(impuesto) as 'CostoPorMaterial', proveedores
+FROM materiales, proveedores
+WHERE clave IN(
+    SELECT clave
+    FROM entregan
+    WHERE numero IN(
+    	SELECT numero
+    	FROM proyectos
+    	WHERE denominacion LIKE 'Educando en Coahuila'
+    )
+);
+CREATE VIEW CostoPorMaterialTelevisa as 
+SELECT M.precio+(M.impuesto) as 'CostoPorMaterial', M.descripcion, E.cantidad, E.numero, Prov.razonsocial
+FROM materiales as M, entregan as E, proyectos as P, proveedores as Prov
+WHERE M.clave = E.clave AND P.numero = E.numero AND Prov.rfc = E.rfc
+AND P.denominacion = 'Televisa en acción';
+
+CREATE VIEW CostoPorMaterialCoahuila as 
+SELECT M.precio+(M.impuesto) as 'CostoPorMaterial', M.descripcion, E.cantidad, E.numero, Prov.razonsocial
+FROM materiales as M, entregan as E, proyectos as P, proveedores as Prov
+WHERE M.clave = E.clave AND P.numero = E.numero AND Prov.rfc = E.rfc
+AND P.denominacion = 'Educando en Coahuila';
+
+SELECT C.CostoPorMaterial as 'CostoCoahuilaPorMaterial',
+T.CostoPorMaterial as 'CostoTelevisaPorMaterial',
+T.descripcion as 'MaterialATelevisa', C.descripcion as 'MaterialACoahuila', T.cantidad as 'CantidadTelevisa',
+C.cantidad'CantidadCoahuila', T.razonsocial, (T.cantidad * T.CostoPorMaterial) as 'GananciaTelevisa',
+(C.cantidad * C.CostoPorMaterial) as 'GananciaCoahuila'
+FROM costopormaterialtelevisa as T, costopormaterialcoahuila AS C
+WHERE C.razonsocial = T.razonsocial;
+
+
+-- Nombre del material, cantidad de veces entregados y total del
+--  costo de dichas entregas por material de todos los proyectos.
+SELECT M.descripcion, E.cantidad, M.precio+(M.impuesto) as 'CostoPorMaterial',
+ E.cantidad * (M.precio+(M.impuesto)) as 'CostoPorEntregas', P.denominacion
+FROM materiales as M, entregan as E, proyectos as P
+WHERE M.clave = E.clave AND E.numero = P.numero
+ORDER BY P.denominacion;
