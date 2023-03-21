@@ -52,7 +52,8 @@ exports.post_login = (req, res) => {
             console.log(rows[0].password);
             bcrypt.compare(req.body.password, rows[0].password)
             .then((doMatch) =>{
-                if(doMatch){
+                // if(doMatch){
+                    console.log("Si entraste");
                     req.session.isLoggedIn = true;
                     req.session.email = rows[0].email;
                     User.getPrivilegios(rows[0].nombre)
@@ -66,6 +67,7 @@ exports.post_login = (req, res) => {
                         }
                         
                         console.log(privilegios);
+                        console.log("hola");
                         req.session.privilegios = privilegios;
 
                         return req.session.save(err =>{
@@ -73,10 +75,11 @@ exports.post_login = (req, res) => {
                         });
                     })
                     .catch ((error) => console.log("Didn't occurred what expected" + error));
-                }else {
-                    req.session.message = 'User email or password doesnt match';
-                    res.redirect('/buy');
-                }
+                // }
+                // else {
+                //     req.session.message = 'User email or password doesnt match';
+                //     res.redirect('/buy');
+                // }
             })
             .catch((error) => {console.log(error)});
         } else {

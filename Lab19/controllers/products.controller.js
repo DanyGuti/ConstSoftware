@@ -95,7 +95,11 @@ exports.get_nuevo = (req, res) => {
     .then(([rows, fieldData]) => {
         res.render(__dirname + '/../views/new',{
             products : rows,
-            csrfToken: req.csrfToken()});
+            csrfToken: req.csrfToken(),
+            isLoggedIn: req.session.isLoggedIn || false,
+            email: req.session.email || '',
+            privilegios: req.session.privilegios || []
+        });
     })
     .catch(error =>{
         console.log(error);
@@ -119,7 +123,10 @@ exports.post_nuevo = (req, res, next) => {
     Product.fetch_all()
     .then(([rows, fieldData]) => {
         res.render(__dirname + '/../views/index', {
-            products: rows
+            products: rows,
+            isLoggedIn: req.session.isLoggedIn || false,
+            email: req.session.email || '',
+            privilegios: req.session.privilegios || []
         });
     })
     .catch(error => {
