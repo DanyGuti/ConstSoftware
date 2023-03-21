@@ -1,0 +1,77 @@
+-- Los materiales (clave y descripción) entregados al proyecto 'México sin ti no estamos completos'
+SELECT M.clave, M.descripcion, E.clave, E.numero, P.numero, P.denominacion
+FROM materiales as M, entregan as E, proyectos as P
+WHERE M.clave = E.clave AND E.numero = P.numero AND P.denominacion = 'México sin ti no estamos completos'
+GROUP BY M.clave, M.descripcion;
+
+-- Los materiales (clave y descripción) que han 
+-- sido proporcionados por el proveedor "Acme tools"
+SELECT M.clave, M.descripcion
+FROM entregan as E, materiales as M
+WHERE E.RFC IN(
+                SELECT P.rfc
+                FROM proveedores as P 
+                WHERE P.razonsocial = 'Oviedo'
+               	GROUP BY M.clave, M.descripcion
+                );
+-- El RFC de los proveedores que durante el 2000
+--  entregaron en promedio cuando menos 300 materiales.
+SELECT rfc, cantidad
+FROM entregan
+WHERE rfc IN(
+            SELECT rfc
+            FROM proveedores
+            WHERE YEAR(fecha) = 2000 AND cantidad >= 300
+            GROUP BY rfc
+            );
+
+-- El Total entregado por cada material en el año 2000.
+SELECT M.descripcion, E.cantidad
+FROM materiales as M, entregan as E
+WHERE M.clave IN(
+                SELECT E.clave
+                FROM entregan as E
+                WHERE YEAR(E.fecha) = 2000
+                GROUP BY E.cantidad
+);
+
+-- La Clave del material más vendido durante el 2001.
+--  (se recomienda usar una vista intermedia para su solución)
+CREATE VIEW material_2001 as SELECT M.clave, E.cantidad
+FROM materiales as M, entregan as E
+WHERE M.clave IN(
+                SELECT E.clave
+                FROM entregan as E
+                WHERE YEAR(E.fecha) = 2001
+                GROUP BY E.cantidad
+);
+
+SELECT MAX(cantidad) as 'CantidadPorClave', clave
+FROM material_2001
+GROUP BY clave;
+
+
+-- Productos que contienen el patrón 'ub' en su nombre.
+SELECT descripcion
+FROM materiales
+WHERE descripcion LIKE '%ub%' 
+				OR descripcion LIKE '%ub'
+				OR descripcion LIKE 'ub%';
+
+-- Denominación y suma del total a pagar para todos los proyectos.
+CREATE VIEW materialtot as SELECT M.clave, E.cantidad, M.precio, P.denominacion
+FROM materiales as M
+WHERE M.clave IN(
+            SELECT E.clave
+            FROM entregan as E
+            WHERE E.numero IN(
+                SELECT P.numero
+                FROM proyectos as P
+                GROUP BY (E.cantidad * M.precio)
+                ORDER BY P.descripcion
+            )
+)
+SELECT denominacion, SUM(cantidad * precio)
+FROM materialtot
+WHERE denominacion = denominacion
+GROUP BY denominacion;
